@@ -8,16 +8,18 @@ function useSearch(searchText) {
   const fetchData = async (searchText) => {
     try {
       setLoading(true);
-      const res = await axios.post("/api/v1/publisher/appsearch", { name: searchText });
-      const _data = res.data.data
-      setResponse(_data)
+      const res = await axios.post(
+        "/api/v1/publisher/appsearch",
+        { name: searchText }
+      );
+      const _data = res.data.data;
+      setResponse(_data);
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
     }
   };
-
 
   useEffect(() => {
     let timer = setTimeout(() => {
