@@ -10,7 +10,13 @@ function useSearch(searchText) {
       setLoading(true);
       const res = await axios.post(
         "/api/v1/publisher/appsearch",
-        { name: searchText }
+        { name: searchText },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*", 
+          },
+        }
       );
       const _data = res.data.data;
       setResponse(_data);
