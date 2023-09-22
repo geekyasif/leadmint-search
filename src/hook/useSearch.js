@@ -8,8 +8,7 @@ function useSearch(searchText) {
   const fetchData = async (searchText) => {
     try {
       setLoading(true);
-      const res = await axios.post(
-        "http://139.59.6.16/api/v1/publisher/appsearch",
+      const res = await axios.post(process.env.REACT_APP_API_URL,
         { name: searchText },
         {
           headers: {
