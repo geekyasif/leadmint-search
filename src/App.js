@@ -17,8 +17,17 @@ function App() {
           <TopHeader />
           <InputSearch searchText={searchText} setSearchText={setSearchText} />
         </div>
+
+        
+
         {loading === false && searchText === "" && <BottomHeader />}
-        {loading && <Loader />}
+        {loading && (
+          Array(10).fill(0).map((_, i) => (
+            <div key={i}>
+              <Loader/>
+              </div>
+          ))
+        )}
         <CardContainer data={response} />
       </div>
     </div>
