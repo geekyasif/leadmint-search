@@ -9,7 +9,7 @@ function useSearch(searchText) {
     try {
       setLoading(true);
       const res = await axios.post(
-        "/api/v1/publisher/appsearch",
+        "http://139.59.6.16/api/v1/publisher/appsearch",
         { name: searchText },
         {
           headers: {
