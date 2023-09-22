@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 function useSearch(searchText) {
@@ -7,16 +8,9 @@ function useSearch(searchText) {
   const fetchData = async (searchText) => {
     try {
       setLoading(true);
-      const res = await fetch("http://139.59.6.16/api/v1/publisher/appsearch", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: searchText }),
-      });
-
-      const _data = await res.json();
-      setResponse(_data.data);
+      const res = await axios.post("http://139.59.6.16/api/v1/publisher/appsearch", { name: searchText });
+      const _data = res.data.data
+      setResponse(_data)
     } catch (error) {
       console.log(error);
     } finally {
